@@ -9,10 +9,13 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.png">
 
-    <title>Prototype - Browse</title>
+    <title>Prototype - Create</title>
 
     <!-- Bootstrap core CSS -->
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
 
     <!-- Custom styles for this template -->
     <link href="starter-template.css" rel="stylesheet">
@@ -43,8 +46,8 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Browse</a></li>
-            <li><a href="create.html">Create</a></li>
+            <li><a href="index.html">Browse</a></li>
+            <li class="active"><a href="create.html">Create</a></li>
             <li><a href="about.html">About</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -52,7 +55,45 @@
     </nav>
 
     <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Create new pattern</h1>
 
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+
+                 <div class="form-group">
+                    <label for="context">Context:</label>
+                    <textarea class="form-control" rows="5" id="context"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="forces">Forces:</label>
+                    <textarea class="form-control" rows="5" id="forces"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="solution">Solution:</label>
+                    <textarea class="form-control" rows="5" id="solution"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="discussion">Discussion:</label>
+                    <textarea class="form-control" rows="5" id="discussion"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="confidence-level">Confidence level:</label><br>
+                    <label class="radio-inline"><input type="radio" name="confidence-level">0</label>
+                    <label class="radio-inline"><input type="radio" name="confidence-level">1</label>
+                    <label class="radio-inline"><input type="radio" name="confidence-level">2</label> 
+                </div>
+
+                <button type="button" class="btn btn-default">Create</button>
+            </div>
+        </div>
     </div><!-- /.container -->
 
 
