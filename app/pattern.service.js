@@ -14,7 +14,11 @@ var PatternService = (function () {
     function PatternService() {
     }
     PatternService.prototype.getPatterns = function () {
-        return mock_patterns_1.PATTERNS;
+        return Promise.resolve(mock_patterns_1.PATTERNS);
+    };
+    PatternService.prototype.getPatternsSlowly = function () {
+        var _this = this;
+        return new Promise(function (resolve) { return setTimeout(resolve, 2000); }).then(function () { return _this.getPatterns(); });
     };
     PatternService = __decorate([
         core_1.Injectable(), 

@@ -19,7 +19,8 @@ var AppComponent = (function () {
         this.getPatterns();
     };
     AppComponent.prototype.getPatterns = function () {
-        this.patterns = this.patternService.getPatterns();
+        var _this = this;
+        this.patternService.getPatterns().then(function (patterns) { return _this.patterns = patterns; });
     };
     AppComponent.prototype.onSelect = function (pattern) {
         this.selectedPattern = pattern;

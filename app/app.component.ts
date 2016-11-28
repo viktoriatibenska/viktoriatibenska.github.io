@@ -86,7 +86,7 @@ export class AppComponent implements OnInit {
     }
 
     getPatterns(): void {
-        this.patterns = this.patternService.getPatterns();
+        this.patternService.getPatterns().then(patterns => this.patterns = patterns);
     }
 
     onSelect(pattern: Pattern): void {

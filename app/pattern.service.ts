@@ -5,7 +5,10 @@ import { PATTERNS } from './mock-patterns'
 
 @Injectable()
 export class PatternService {
-    getPatterns(): Pattern[] {
-        return PATTERNS;
+    getPatterns(): Promise<Pattern[]> {
+        return Promise.resolve(PATTERNS);
+    }
+    getPatternsSlowly(): Promise<Pattern[]> {
+        return new Promise<Pattern[]>(resolve => setTimeout(resolve, 2000)).then(() => this.getPatterns());
     }
 }
