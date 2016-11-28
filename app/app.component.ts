@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Pattern } from './pattern';
 
 const PATTERNS: Pattern[] = [
     { id: 11, name: 'Divide and conquer' },
@@ -69,19 +70,14 @@ const PATTERNS: Pattern[] = [
 
         <h2>Patterns</h2>
         <ul class="patterns">
-        <li *ngFor="let pattern of patterns" [class.selected]="pattern === selectedPattern" (click)="onSelect(pattern)">
+        <li *ngFor="let pattern of patterns" 
+            [class.selected]="pattern === selectedPattern" 
+            (click)="onSelect(pattern)">
             <span class="badge">{{pattern.id}}</span> {{pattern.name}}
         </li>
         </ul>
 
-        <div *ngIf="selectedPattern">
-            <h2>{{selectedPattern.name}} details!</h2>
-            <div><label>id: </label>{{selectedPattern.id}}</div>
-            <div>
-                <label>name: </label>
-                <input [(ngModel)]="selectedPattern.name" placeholder="name">
-            </div>
-        </div>
+        <my-pattern-detail [pattern]="selectedPattern"></my-pattern-detail>
       `
 })
 
@@ -93,9 +89,4 @@ export class AppComponent {
     onSelect(pattern: Pattern): void {
         this.selectedPattern = pattern;
     }
-}
-
-export class Pattern {
-    id: number;
-    name: string;
 }

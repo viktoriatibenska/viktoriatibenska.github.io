@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { PatternDetailComponent } from './pattern-detail.component';
 
 @NgModule({
     imports: [
@@ -10,8 +11,9 @@ import { AppComponent } from './app.component';
         FormsModule
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+        PatternDetailComponent
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [ AppComponent ]
 })
 export class AppModule { }
