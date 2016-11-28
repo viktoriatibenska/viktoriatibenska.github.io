@@ -1,18 +1,8 @@
 import { Component } from '@angular/core';
-import { Pattern } from './pattern';
+import { OnInit } from '@angular/core';
 
-const PATTERNS: Pattern[] = [
-    { id: 11, name: 'Divide and conquer' },
-    { id: 12, name: 'Organization follows location' },
-    { id: 13, name: 'Face to face before working remotely' },
-    { id: 14, name: 'Architect controls product' },
-    { id: 15, name: 'Stand up meeting' },
-    { id: 16, name: 'Deploy along the grain' },
-    { id: 17, name: 'Architect also implements' },
-    { id: 18, name: 'Standards linking locations' },
-    { id: 19, name: 'Code ownership' },
-    { id: 20, name: 'Variation behind interface' }
-];
+import { Pattern } from './pattern';
+import { PatternService } from './pattern.service'
 
 @Component({
     selector: 'my-app',
@@ -78,13 +68,26 @@ const PATTERNS: Pattern[] = [
         </ul>
 
         <my-pattern-detail [pattern]="selectedPattern"></my-pattern-detail>
-      `
+      `,
+      providers: [PatternService]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+    ngOnInit(): void {
+        this.getPatterns();
+    }
+
     title = 'Browse patterns';
     selectedPattern: Pattern;
-    patterns = PATTERNS;
+    patterns;
+
+    constructor(private patternService: PatternService) { 
+        
+    }
+
+    getPatterns(): void {
+        this.patterns = this.patternService.getPatterns();
+    }
 
     onSelect(pattern: Pattern): void {
         this.selectedPattern = pattern;
