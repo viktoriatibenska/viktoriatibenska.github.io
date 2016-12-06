@@ -9,18 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Browse patterns';
+var pattern_service_1 = require('./pattern.service');
+var DashboardComponent = (function () {
+    function DashboardComponent(patternService) {
+        this.patternService = patternService;
+        this.patterns = [];
     }
-    AppComponent = __decorate([
+    DashboardComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.patternService.getPatterns()
+            .then(function (patterns) { return _this.patterns = patterns.slice(1, 5); });
+    };
+    DashboardComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n        <h1>{{title}}</h1>\n        <nav>\n            <a routerLink=\"/dashboard\">Dashboard</a>\n            <a routerLink=\"/patterns\">Patterns</a>\n        </nav>\n        <router-outlet></router-outlet>\n    "
+            moduleId: module.id,
+            selector: 'my-dashboard',
+            templateUrl: 'dashboard.component.html'
         }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+        __metadata('design:paramtypes', [pattern_service_1.PatternService])
+    ], DashboardComponent);
+    return DashboardComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.DashboardComponent = DashboardComponent;
+//# sourceMappingURL=dashboard.component.js.map
