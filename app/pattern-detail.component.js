@@ -29,6 +29,11 @@ var PatternDetailComponent = (function () {
     PatternDetailComponent.prototype.goBack = function () {
         this.location.back();
     };
+    PatternDetailComponent.prototype.save = function () {
+        var _this = this;
+        this.patternService.update(this.pattern)
+            .then(function () { return _this.goBack(); });
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', pattern_1.Pattern)

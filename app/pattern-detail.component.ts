@@ -32,4 +32,9 @@ export class PatternDetailComponent implements OnInit {
     goBack(): void {
         this.location.back();
     }
+
+    save(): void {
+        this.patternService.update(this.pattern)
+            .then(() => this.goBack());
+    }
 }

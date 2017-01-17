@@ -1,9 +1,19 @@
 <h2>Patterns</h2>
+
+<div>
+  <label>Pattern name:</label> <input #patternName />
+  <button (click)="add(patternName.value); patternName.value=''">
+    Add
+  </button>
+</div>
+
 <ul class="patterns">
 <li *ngFor="let pattern of patterns" 
     [class.selected]="pattern === selectedPattern" 
     (click)="onSelect(pattern)">
-    <span class="badge">{{pattern.id}}</span> {{pattern.name}}
+    <span class="badge">{{pattern.id}}</span> 
+    <span>{{pattern.name}}</span>
+    <button class="delete" (click)="delete(pattern); $event.stopPropagation()">X</button>
 </li>
 </ul>
 

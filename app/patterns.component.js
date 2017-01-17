@@ -29,6 +29,29 @@ var PatternsComponent = (function () {
     PatternsComponent.prototype.onSelect = function (pattern) {
         this.selectedPattern = pattern;
     };
+    PatternsComponent.prototype.add = function (name) {
+        var _this = this;
+        name = name.trim();
+        if (!name) {
+            return;
+        }
+        this.patternService.create(name)
+            .then(function (pattern) {
+            _this.patterns.push(pattern);
+            _this.selectedPattern = null;
+        });
+    };
+    PatternsComponent.prototype.delete = function (pattern) {
+        var _this = this;
+        this.patternService
+            .delete(pattern.id)
+            .then(function () {
+            _this.patterns = _this.patterns.filter(function (p) { return p !== pattern; });
+            if (_this.selectedPattern === pattern) {
+                _this.selectedPattern = null;
+            }
+        });
+    };
     PatternsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

@@ -35,4 +35,23 @@ export class PatternsComponent implements OnInit {
     onSelect(pattern: Pattern): void {
         this.selectedPattern = pattern;
     }
+
+    add(name: string): void {
+        name = name.trim();
+        if (!name) { return; }
+        this.patternService.create(name)
+            .then(pattern => {
+                this.patterns.push(pattern);
+                this.selectedPattern = null;
+        });
+    }
+
+    delete(pattern: Pattern): void {
+        this.patternService
+            .delete(pattern.id)
+            .then(() => {
+                this.patterns = this.patterns.filter(p => p !== pattern);
+                if (this.selectedPattern === pattern) { this.selectedPattern = null; }
+            });
+    }
 }
