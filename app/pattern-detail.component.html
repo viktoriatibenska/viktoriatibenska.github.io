@@ -1,0 +1,10 @@
+<div *ngIf="pattern">
+    <h2>{{pattern.name}} details!</h2>
+    <div><label>id: </label>{{pattern.id}}</div>
+    <div>
+        <label>name: </label>
+        <input [(ngModel)]="pattern.name" placeholder="name">
+    </div>
+
+    <button (click)="goBack()">Back</button>
+</div>

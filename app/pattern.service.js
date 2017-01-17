@@ -20,6 +20,10 @@ var PatternService = (function () {
         var _this = this;
         return new Promise(function (resolve) { return setTimeout(resolve, 2000); }).then(function () { return _this.getPatterns(); });
     };
+    PatternService.prototype.getPattern = function (id) {
+        return this.getPatterns()
+            .then(function (patterns) { return patterns.find(function (pattern) { return pattern.id === id; }); });
+    };
     PatternService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

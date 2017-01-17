@@ -1,0 +1,15 @@
+<h2>Patterns</h2>
+<ul class="patterns">
+<li *ngFor="let pattern of patterns" 
+    [class.selected]="pattern === selectedPattern" 
+    (click)="onSelect(pattern)">
+    <span class="badge">{{pattern.id}}</span> {{pattern.name}}
+</li>
+</ul>
+
+<div *ngIf="selectedPattern">
+<h2>
+    {{selectedPattern.name | uppercase}} is my pattern
+</h2>
+<button (click)="gotoDetail()">View Details</button>
+</div>
