@@ -1,0 +1,10 @@
+<div id="search-component">
+  <h4>Pattern Search</h4>
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <div>
+    <div *ngFor="let pattern of patterns | async"
+         (click)="gotoDetail(pattern)" class="search-result" >
+      {{pattern.name}}
+    </div>
+  </div>
+</div>
